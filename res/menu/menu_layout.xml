@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/action_refresh"
+	    android:icon="@drawable/refresh"
+	    android:title="@string/refresh"
+	    android:showAsAction = "ifRoom|withText"/>    
+	<item android:id="@+id/action_location"
+	    android:icon="@drawable/location"
+	    android:title="@string/location"
+	    android:showAsAction = "ifRoom|withText"/>
+</menu>

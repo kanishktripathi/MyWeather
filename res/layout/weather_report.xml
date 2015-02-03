@@ -1,0 +1,101 @@
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/sunrise"
+            style="@style/display_base_text"
+            android:layout_alignParentLeft="true"
+            android:text="@string/sunrise" />
+
+        <TextView
+            android:id="@+id/sunrise_text"
+            style="@style/display_base_text"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/sunrise"/>
+
+        <TextView
+            android:id="@+id/sunset"
+			style="@style/display_base_text"
+            android:layout_marginLeft="@dimen/weather_report_margin"
+            android:layout_toRightOf="@id/sunrise"
+            android:text="@string/sunset" />
+
+        <TextView
+            android:id="@+id/sunset_text"
+            style="@style/display_base_text"
+            android:layout_alignLeft="@id/sunset"
+            android:layout_below="@id/sunset"/>
+
+        <TextView
+            android:id="@+id/wind_chill"
+            style="@style/display_base_text"
+            android:layout_marginLeft="@dimen/weather_report_margin"
+            android:layout_toRightOf="@id/sunset"
+            android:text="@string/wind_chill" />
+
+        <TextView
+            android:id="@+id/windchill_text"
+            style="@style/display_base_text"
+            android:layout_alignLeft="@id/wind_chill"
+            android:layout_below="@id/wind_chill"/>
+
+        <TextView
+            android:id="@+id/humidity"
+            style="@style/display_base_text"
+            android:layout_marginLeft="@dimen/weather_report_margin"
+            android:layout_toRightOf="@id/wind_chill"
+            android:text="@string/humidity" />
+
+        <TextView
+            android:id="@+id/humidity_text"
+            style="@style/display_base_text"
+            android:layout_alignLeft="@id/humidity"
+            android:layout_below="@id/humidity"/>
+ 		<TextView
+            style="@style/display_base_text"
+            android:layout_toRightOf="@id/humidity_text"
+            android:layout_below="@id/humidity"
+            android:text="@string/percent" />
+        <TextView
+            android:id="@+id/wind"
+            android:text="@string/wind_speed"
+            style="@style/display_base_text"
+            android:layout_marginLeft="@dimen/weather_report_margin"
+            android:layout_toRightOf="@id/humidity" />
+
+        <TextView
+            android:id="@+id/wind_text"
+            style="@style/display_base_text"
+            android:layout_alignLeft="@id/wind"
+            android:layout_below="@id/wind"/>
+		<TextView
+            style="@style/display_base_text"
+            android:layout_toRightOf="@id/wind_text"
+            android:layout_below="@id/wind"
+            android:text="@string/windSpeed" />
+        <TextView
+            android:id="@+id/pressure"
+            style="@style/display_base_text"
+            android:layout_marginLeft="@dimen/weather_report_margin"
+            android:layout_toRightOf="@id/wind"
+            android:text="@string/pressure" />
+
+        <TextView
+            android:id="@+id/pressure_text"
+            style="@style/display_base_text"
+            android:layout_alignLeft="@id/pressure"
+            android:layout_below="@id/pressure"/>
+        <TextView
+            style="@style/display_base_text"
+            android:layout_toRightOf="@id/pressure_text"
+            android:layout_below="@id/pressure"
+            android:text="@string/pressure_unit" />
+    </RelativeLayout>
+
+</HorizontalScrollView>

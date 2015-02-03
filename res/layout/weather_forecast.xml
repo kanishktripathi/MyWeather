@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/forecast1"
+        style="@style/weather_forecast_firstCell"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/forecastText1"
+        style="@style/weather_forecast_content"
+        android:layout_alignBottom="@id/forecast1" />
+
+    <ImageView
+        android:id="@+id/img_weather1"
+        style="@style/weather_forecast_image"
+        android:layout_alignBottom="@id/forecast1"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/forecastMin1"
+        style="@style/weather_forecast_grey"
+        android:layout_alignBottom="@id/forecast1" />
+
+    <TextView
+        android:id="@+id/forecastMax1"
+        style="@style/weather_forecast_white"
+        android:layout_alignBottom="@id/forecast1" />
+
+    <TextView
+        android:id="@+id/forecast2"
+        style="@style/weather_forecast_firstCell"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/forecast1" />
+
+     <TextView
+        android:id="@+id/forecastText2"
+        style="@style/weather_forecast_content"
+        android:layout_alignBottom="@id/forecast2" />
+     
+    <ImageView
+        android:id="@+id/img_weather2"
+        style="@style/weather_forecast_image"
+        android:layout_alignBottom="@id/forecast2"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/forecastMin2"
+        style="@style/weather_forecast_grey"
+        android:layout_alignBottom="@id/forecast2" />
+
+    <TextView
+        android:id="@+id/forecastMax2"
+        style="@style/weather_forecast_white"
+        android:layout_alignBottom="@id/forecast2" />
+
+    <TextView
+        android:id="@+id/forecast3"
+        style="@style/weather_forecast_firstCell"
+        android:layout_below="@id/forecast2" />
+
+     <TextView
+        android:id="@+id/forecastText3"
+        style="@style/weather_forecast_content"
+        android:layout_alignBottom="@id/forecast3" />
+     
+    <ImageView
+        android:id="@+id/img_weather3"
+        style="@style/weather_forecast_image"
+        android:layout_alignBottom="@id/forecast3"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/forecastMin3"
+        style="@style/weather_forecast_grey"
+        android:layout_alignBottom="@id/forecast3" />
+
+    <TextView
+        android:id="@+id/forecastMax3"
+        style="@style/weather_forecast_white"
+        android:layout_alignBottom="@id/forecast3" />
+
+    <TextView
+        android:id="@+id/forecast4"
+        style="@style/weather_forecast_firstCell"
+        android:layout_below="@id/forecast3" />
+
+     <TextView
+        android:id="@+id/forecastText4"
+        style="@style/weather_forecast_content"
+        android:layout_alignBottom="@id/forecast4" />
+     
+    <ImageView
+        android:id="@+id/img_weather4"
+        style="@style/weather_forecast_image"
+        android:layout_alignBottom="@id/forecast4"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/forecastMin4"
+        style="@style/weather_forecast_grey"
+        android:layout_alignBottom="@id/forecast4" />
+
+    <TextView
+        android:id="@+id/forecastMax4"
+        style="@style/weather_forecast_white"
+        android:layout_alignBottom="@id/forecast4" />
+
+</RelativeLayout>

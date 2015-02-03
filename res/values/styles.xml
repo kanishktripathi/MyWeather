@@ -1,0 +1,73 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Black">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="base_text_color">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="display_base_text" parent="@style/base_text_color">
+        <item name="android:textSize">@dimen/weather_report</item>
+    </style>
+
+    <style name="display_temperature" parent="@style/base_text_color">
+        <item name="android:textSize">@dimen/place_temperature</item>
+    </style>
+	
+    <style name="separator" parent="@style/base_text_color">
+        <item name="android:layout_height">@dimen/line_thin</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:layout_marginTop">@dimen/line_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/line_margin_top</item>
+    </style>
+    
+    <style name="weather_forecast_text" parent="@style/base_text_color">
+        <item name="android:textSize">@dimen/place_weather_text</item>
+    </style>
+
+    <style name="weather_forecast_firstCell" parent="@style/weather_forecast_text">
+        <item name="android:layout_marginBottom">@dimen/text_image_margin</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="weather_forecast_white" parent="@style/weather_forecast_text">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/weather_forecast_margin</item>
+    </style>
+    
+    <style name="weather_forecast_grey" parent="@style/weather_forecast_text">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:textColor">@color/grey_dark</item>
+    </style>
+    
+    <style name="weather_forecast_content" parent="@style/weather_forecast_text">
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_marginLeft">50dp</item>
+    </style>
+    
+    <style name="weather_forecast_image">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/weather_img_margin</item>
+        <item name="android:layout_height">@dimen/weather_forecast_img</item>
+        <item name="android:layout_width">@dimen/weather_forecast_img</item>
+    </style>
+
+</resources>
