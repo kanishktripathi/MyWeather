@@ -66,8 +66,12 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		favourite.setOnClickListener(this);
 	}
 
+	/**
+	 * Processes weather query response for update on the UI
+	 * @param response the response from the API
+	 */
 	protected void processWeatherQueryResponse(Channel response) {
-		if (response != null) {
+		if (response != null && response.getAstronomy() != null) {
 			updateContainer.updateElements(response);
 			weatherActivityContainerView.setVisibility(View.VISIBLE);
 		} else {
@@ -137,9 +141,13 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		//Add the city to shared preferences for persistence
 		this.currentWeatherTask = null;
 		processWeatherQueryResponse(weatherChanel);
-		SharedPreferences.Editor editor = getSharedPreferences().edit();
-		editor.putString(Constants.WOEID, woeid);
-		editor.commit();
+		SharedPreferences pref = getSharedPreferences();
+		//Change the location woeid in shared preference if its different from previous one.
+		if(!woeid.equals(pref.getString(Constants.WOEID, null))) {
+			SharedPreferences.Editor editor = getSharedPreferences().edit();
+			editor.putString(Constants.WOEID, woeid);
+			editor.commit();				
+		}
 	}
 
 }

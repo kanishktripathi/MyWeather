@@ -5,7 +5,7 @@
     <string name="search_hint">Type place to search</string>
     <string name="net_connect_error">Please connect to mobile data or Wi-fi</string>
     <string name="loc_error">Please enable GPS or network location services for current location weather</string>
-    <string name="weather_error">There was a problem in finding the weather</string>
+    <string name="weather_error">There was a problem in finding the weather of this place</string>
     <string name="place_add_error">This place has already been added</string>
     <string name="place_add_max_error">You cannot add more than 10 places</string>
     <string name="refresh">Refresh</string>
