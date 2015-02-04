@@ -9,6 +9,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -214,7 +215,9 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 	}
 
 	protected void displayMessage(String text) {
-		Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+		Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+		toast.show();
 	}
 
 	/**
