@@ -1,11 +1,13 @@
 package com.kanishk.weather.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.kanishk.constants.Constants;
 import com.kanishk.constants.Temperature;
@@ -37,16 +39,31 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		setContentView(R.layout.activity_weather);
 		setupAutoSuggest();
 		updateContainer = WeatherUpdateContainer.getInitUpdateContainer(this);
-		setUpTemperatureButton();
+		setUpOptionButtons();
 		weatherActivityContainerView = findViewById(R.id.weather_layout);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		Intent i = new Intent();
+        i.setClass(this, FavouriteActivity.class);
+        startActivity(i);
 	}
 	
 	/**
 	 * Sets the up temperature button.
 	 */
-	private void setUpTemperatureButton() {
+	private void setUpOptionButtons() {
 		this.temperatureUnit = (Button) findViewById(R.id.tempr_unit);
-		temperatureUnit.setOnClickListener(this);
+		temperatureUnit.setOnClickListener(new OnClickListener() {		
+			@Override
+			public void onClick(View v) {
+				changeTemperature();
+			}
+		});
+		ImageButton favourite = (ImageButton) findViewById(R.id.favourites);
+		favourite.setOnClickListener(this);
 	}
 
 	protected void processWeatherQueryResponse(Channel response) {
@@ -58,8 +75,7 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		}
 	}
 	
-	@Override
-	public void onClick(View v) {
+	private void changeTemperature() {
 		SharedPreferences pref = getSharedPreferences();
 		String tempUnit = pref.getString(Constants.TEMPERATURE, Temperature.CELCIUS.getValue());
 		Temperature temperature;

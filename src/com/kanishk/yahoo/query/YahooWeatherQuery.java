@@ -28,7 +28,6 @@ public class YahooWeatherQuery {
 	private YahooWeatherQuery(String searchId) {
 		super();
 		this.searchValue = searchId;
-		this.temperature = Constants.TEMP_CELCIUS;
 	}	
 	
 	/**
@@ -62,11 +61,12 @@ public class YahooWeatherQuery {
 	 * @param searchId the search id
 	 * @return the search query by lat long
 	 */
-	public static YahooWeatherQuery getSearchQueryByLatLong(double lat, double longitude) {
+	public static YahooWeatherQuery getSearchQueryByLatLong(double lat, double longitude, String temperature) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(lat).append(Constants.COMMA).append(longitude);
 		YahooWeatherQuery query = new YahooWeatherQuery(sb.toString());
 		query.queryType = Type.LAT_LONG;
+		query.temperature = temperature;
 		return query;
 	}
 	
@@ -141,15 +141,6 @@ public class YahooWeatherQuery {
 			.append(searchValue).append("%26u%3D").append(temperature).append("%27&format=json");
 		}
 		return sb.toString();
-	}
-
-	/**
-	 * Sets the temperature.
-	 *
-	 * @param temperature the new temperature
-	 */
-	public void setTemperature(String temperature) {
-		this.temperature = temperature;
 	}
 	
 	public void setSearchValue(String searchValue) {

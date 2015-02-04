@@ -14,9 +14,10 @@
     <dimen name="weather_forecast_img">20dp</dimen>
     <dimen name="weather_img_margin">80dp</dimen>
     <dimen name="weather_img">60dp</dimen>
+    <dimen name="facourite_list_margin">10dp</dimen>
     <!-- UI element font sizes -->
 	<dimen name="option_text">20sp</dimen>
-	<dimen name="suggest_text">18sp</dimen>
+	<dimen name="suggest_text">20sp</dimen>
 	<!-- Weather elements font size -->
 	<dimen name="place_name">25sp</dimen>
 	<dimen name="place_weather_text">15sp</dimen>

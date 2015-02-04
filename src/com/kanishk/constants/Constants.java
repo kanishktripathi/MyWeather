@@ -5,12 +5,6 @@ package com.kanishk.constants;
  */
 public class Constants {
 	
-	/** The Constant YAHOO_TEMP_CELCIUS. */
-	public static final String TEMP_CELCIUS = "c";
-	
-	/** The Constant YAHOO_TEMP_FAREN. */
-	public static final String TEMP_FAREN = "f";
-	
 	/** The Constant UTF8. */
 	public static final String UTF8 = "UTF-8";
 	
@@ -28,4 +22,9 @@ public class Constants {
 	
 	/** The Constant YAHOO_IMAGE_EXTENSION. The extension for the images for yahoo weather*/
 	public static final String YAHOO_IMAGE_EXTENSION = ".gif";
+	
+	public static final String FAVOURITES = "fav";
+	
+	public static final String PATTERN = "__";
+	
 }

@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/facourite_list_margin" >
+
+    <ImageButton
+        android:id="@+id/favImg_rem"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="@dimen/weather_forecast_img"
+        android:contentDescription="@null"
+        android:src="@drawable/remove" />
+
+    <TextView
+        android:id="@+id/favText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_hint"
+        android:background="@layout/text_selector"
+        android:textSize="@dimen/place_name" />
+
+</LinearLayout>

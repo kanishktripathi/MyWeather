@@ -47,13 +47,17 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 
 	/** The location track. */
 	private LocationTracker locationTrack;
-
+	
+	/** The shared preference object for the activities*/
 	private SharedPreferences preferences;
+	
+	/** The constant for shared preference name*/
+	private static final String SHARED_ACTIVITY = "com.kanishk.weather.BaseActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.preferences = getPreferences(Context.MODE_PRIVATE);
+		this.preferences = getSharedPreferences(SHARED_ACTIVITY, MODE_PRIVATE);
 		this.locationTrack = new LocationTracker(this,
 				(LocationManager) getSystemService(LOCATION_SERVICE));
 	}
@@ -115,7 +119,7 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 	/**
 	 * Auto suggest click action. The action to peform when a suggestion in
 	 * location auto suggest is selected. Override this method to perform the
-	 * required action in t=derived activity.
+	 * required action in derived activity.
 	 * 
 	 * @param place
 	 *            the place
@@ -137,10 +141,9 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 		StringBuilder sb = new StringBuilder();
 		sb.append(location.getLatitude()).append(Constants.COMMA)
 				.append(location.getLongitude());
+		String temperature = preferences.getString(Constants.TEMPERATURE, Temperature.CELCIUS.getValue());
 		YahooWeatherQuery query = YahooWeatherQuery.getSearchQueryByLatLong(
-				location.getLatitude(), location.getLongitude());
-		query.setTemperature(preferences.getString(Constants.TEMPERATURE,
-				Temperature.CELCIUS.getValue()));
+				location.getLatitude(), location.getLongitude(), temperature);
 		searchWeather(query);
 	}
 
@@ -207,12 +210,11 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 	}
 
 	protected boolean hasNetAccess() {
-		return RestClient
-				.hasNetwork((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
+		return RestClient.hasNetwork((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE));
 	}
 
 	protected void displayMessage(String text) {
-		Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
 	}
 
 	/**

@@ -121,6 +121,16 @@
             android:layout_alignLeft="@id/separator3"
             android:layout_below="@id/separator3"
             android:text="@string/degreeC" />
+        
+        <ImageButton
+            android:id="@+id/favourites"
+            android:contentDescription="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/separator3"
+            android:text="@string/degreeC" />
 
         <ImageView
             android:layout_width="wrap_content"
