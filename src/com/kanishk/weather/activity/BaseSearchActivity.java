@@ -173,6 +173,8 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 					Temperature.CELCIUS.getValue());
 			YahooWeatherQuery query = YahooWeatherQuery.getSearchQueryForLocation(woeid, temperature);
 			this.searchWeather(query);
+		} else {
+			locationSearch();
 		}
 	}
 
