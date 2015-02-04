@@ -130,6 +130,7 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		this.progress.dismiss();
 		updateContainer = null;
 		if(this.currentWeatherTask != null) {
 			currentWeatherTask.cancel(true);
@@ -145,6 +146,7 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 	@Override
 	protected void onStop() {
 		super.onStop();
+		this.progress.dismiss();
 		if(this.currentWeatherTask != null) {
 			currentWeatherTask.cancel(true);
 		}
