@@ -1,5 +1,6 @@
 package com.kanishk.weather.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 import com.kanishk.constants.Constants;
 import com.kanishk.constants.Temperature;
 import com.kanishk.weather.R;
+import com.kanishk.weather.Util;
 import com.kanishk.weather.client.YahooWeatherTask;
 import com.kanishk.yahoo.pojo.weather.Channel;
 import com.kanishk.yahoo.query.YahooWeatherQuery;
@@ -32,6 +34,12 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 	
 	/** The weather finding task currently executing. It */
 	private YahooWeatherTask currentWeatherTask;
+	
+	/** The outerlay out for changing the colors. */
+	private View outerlayOut;
+	
+	/** The progress dialogue bar. */
+	private ProgressDialog progress;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,8 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		setUpOptionButtons();
 		weatherActivityContainerView = findViewById(R.id.weather_layout);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		outerlayOut = findViewById(R.id.outerlay);
+		setProgressDialogue();
 	}
 	
 	@Override
@@ -49,6 +59,20 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		Intent i = new Intent();
         i.setClass(this, FavouriteActivity.class);
         startActivity(i);
+	}
+	
+	/**
+	 * Sets the values for the progress dialogue. We create the object explicitly to
+	 * reuse the same instance as the weather updates will be frequent.
+	 */
+	private void setProgressDialogue() {
+		progress = new ProgressDialog(this);
+		progress.setMessage(getString(R.string.progress));
+		progress.setIndeterminate(false);
+		progress.setOnCancelListener(null);
+		progress.setTitle(null);
+        progress.setCancelable(false);
+        progress.show();
 	}
 	
 	/**
@@ -74,6 +98,13 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		if (response != null && response.getAstronomy() != null) {
 			updateContainer.updateElements(response);
 			weatherActivityContainerView.setVisibility(View.VISIBLE);
+			//Change color according to day or night
+			if(Util.isDay(response.getLastBuildDate(), response.getAstronomy().getSunrise(), 
+					response.getAstronomy().getSunset())) {
+				outerlayOut.setBackgroundColor(getResources().getColor(R.color.day));
+			} else {
+				outerlayOut.setBackgroundColor(getResources().getColor(R.color.midnight));
+			}
 		} else {
 			displayMessage(getString(R.string.weather_error));
 		}
@@ -131,6 +162,8 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 			YahooWeatherTask weatherTask = new YahooWeatherTask(this);
 			this.currentWeatherTask = weatherTask;
 			weatherTask.execute(query);
+			//Progress dialogue before execution
+			progress.show();
 		} else {
 			displayMessage(getString(R.string.net_connect_error));
 		}
@@ -138,9 +171,10 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 	
 	@Override
 	public void postResults(Channel weatherChanel, String woeid) {
-		//Add the city to shared preferences for persistence
 		this.currentWeatherTask = null;
+		progress.dismiss(); // Hide progress dialogue and update weather
 		processWeatherQueryResponse(weatherChanel);
+		//Add the city to shared preferences for persistence
 		SharedPreferences pref = getSharedPreferences();
 		//Change the location woeid in shared preference if its different from previous one.
 		if(!woeid.equals(pref.getString(Constants.WOEID, null))) {
