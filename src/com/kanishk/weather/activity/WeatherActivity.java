@@ -72,7 +72,6 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		progress.setOnCancelListener(null);
 		progress.setTitle(null);
         progress.setCancelable(false);
-        progress.show();
 	}
 	
 	/**
