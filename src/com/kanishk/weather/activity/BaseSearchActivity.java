@@ -73,14 +73,14 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.action_location:
+		case R.id.action_fav:
+			favoriteButtonAction();
+			return true;
+		case R.id.action_loc:
 			locationSearch();
 			return true;
 		case R.id.action_refresh:
 			refresh();
-			return true;
-		case R.id.action_favourites:
-			favoriteButtonAction();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
