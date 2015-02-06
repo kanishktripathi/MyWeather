@@ -18,8 +18,9 @@ public class Util {
 	
 	/**
 	 * Checks if is day. This method splits the strings and computes time based on the string values.
-	 * Since the Yahoo API we used does not provide the field for current time ,sunrise and sunset values
-	 * we are forced to split strings from date and find if its day or not
+	 * Since the Yahoo API we used does not provide the field for current time
+	 * we are forced to split strings from last build and find if its day or not by writing custom
+	 * methods for comparing with sunrise and sunset
 	 * @param currentTime the current time
 	 * @param sunrise the sunrise time
 	 * @param sunset the sunset time

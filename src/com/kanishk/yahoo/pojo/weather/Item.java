@@ -9,24 +9,24 @@ import com.google.gson.annotations.SerializedName;
 
 public class Item {
 
-    @Expose
+    
     private String title;
-    @Expose
+    
     private String lat;
-    @SerializedName("long")
-    @Expose
+    
+    @SerializedName("long")    
     private String _long;
-    @Expose
+    
     private String link;
-    @Expose
+    
     private String pubDate;
     @Expose
     private Condition condition;
-    @Expose
+    
     private String description;
     @Expose
     private List<Forecast_> forecast = new ArrayList<Forecast_>();
-    @Expose
+    
     private Guid guid;
 
     /**

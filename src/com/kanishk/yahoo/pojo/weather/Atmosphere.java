@@ -9,9 +9,9 @@ public class Atmosphere {
     private String humidity;
     @Expose
     private String pressure;
-    @Expose
+    
     private String rising;
-    @Expose
+    
     private String visibility;
 
     /**

@@ -5,11 +5,11 @@ import com.google.gson.annotations.Expose;
 
 public class Query {
 
-    @Expose
+    
     private Integer count;
-    @Expose
+    
     private String created;
-    @Expose
+    
     private String lang;
     @Expose
     private Results results;

@@ -159,4 +159,8 @@ public class FavouriteActivity extends BaseSearchActivity implements FavouriteLa
 		super.onDestroy();
 		layoutList.removeAllViews();
 	}
+
+	@Override
+	protected void favoriteButtonAction() {
+	}
 }

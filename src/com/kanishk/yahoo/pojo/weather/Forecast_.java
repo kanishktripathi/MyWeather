@@ -7,7 +7,7 @@ public class Forecast_ {
 
     @Expose
     private String code;
-    @Expose
+    
     private String date;
     @Expose
     private String day;

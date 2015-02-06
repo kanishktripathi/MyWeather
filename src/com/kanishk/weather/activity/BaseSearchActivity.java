@@ -79,6 +79,9 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 		case R.id.action_refresh:
 			refresh();
 			return true;
+		case R.id.action_favourites:
+			favoriteButtonAction();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -157,6 +160,12 @@ public abstract class BaseSearchActivity extends Activity implements LocationLis
 	 *            the query
 	 */
 	protected abstract void searchWeather(YahooWeatherQuery query);
+	
+	/**
+	 * Favorite button action. The action to perform on clicking the favorite button
+	 * on the action bar. Implement in the derived activity.
+	 */
+	protected abstract void favoriteButtonAction();
 
 	/**
 	 * The method to again find weather for the currently searched location on

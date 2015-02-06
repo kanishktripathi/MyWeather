@@ -133,7 +133,7 @@ public final class WeatherUpdateContainer {
 	 * @param context
 	 *            the context
 	 */
-	public WeatherUpdateContainer(WeatherActivity context) {
+	private WeatherUpdateContainer(WeatherActivity context) {
 		temperatureTexts = new ArrayList<TextView>(12);
 		place = (TextView) context.findViewById(R.id.place_name);
 		temperature = (TextView) context.findViewById(R.id.place_temper);
@@ -250,7 +250,19 @@ public final class WeatherUpdateContainer {
 		forecastText4.setText(foreCast.getText());
 	}
 	
+	/**
+	 * Image update. Creates a new task for image update. 
+	 * @param view the image view
+	 * @param weatherCode the weather code to be appened for final image url
+	 */
 	private void imageUpdate(ImageView view, String weatherCode) {
+		/*This task can be optimized further by sending a collection
+		 * of images with similar code to Image task. This can be done
+		 * if we have more number of images to display on screen in future(like hourly weather forecast).
+		 * It is not done right now because the probability of having same images may not be high in a 
+		 * set of 5 images. Also grouping only 5 images using a map will be an memory intensive.
+		 * There's a high probability of getting maps with only 1 or 2 image views  
+		 * */
 		YahooWeatherImageTask.taskExecuteUtil(weatherCode, view);
 	}
 	

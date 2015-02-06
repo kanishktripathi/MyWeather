@@ -7,4 +7,8 @@
 	    android:icon="@drawable/location"
 	    android:title="@string/location"
 	    android:showAsAction = "ifRoom|withText"/>
+	<item android:id="@+id/action_favourites"
+	    android:icon="@drawable/add"
+	    android:title="@string/favourites"
+	    android:showAsAction = "ifRoom|withText"/>
 </menu>

@@ -5,21 +5,21 @@ import com.google.gson.annotations.Expose;
 
 public class Channel {
 
-    @Expose
+    
     private String title;
-    @Expose
+    
     private String link;
-    @Expose
+    
     private String description;
-    @Expose
+    
     private String language;
     @Expose
     private String lastBuildDate;
-    @Expose
+    
     private String ttl;
     @Expose
     private Location location;
-    @Expose
+    
     private Units units;
     @Expose
     private Wind wind;
@@ -27,7 +27,7 @@ public class Channel {
     private Atmosphere atmosphere;
     @Expose
     private Astronomy astronomy;
-    @Expose
+    
     private Image image;
     @Expose
     private Item item;

@@ -19,8 +19,8 @@ public class ImageManager {
 	private static ImageManager instance = null;
 	
 	
-	/** The Constant CACHE_SIZE. Initialized to 40KB */
-	private static final int CACHE_SIZE = 40 * 1024; 
+	/** The Constant CACHE_SIZE. Initialized to 50KB */
+	private static final int CACHE_SIZE = 50 * 1024; 
 	
 	/** The image cache. */
 	private final LruCache<String, Bitmap> imageCache;

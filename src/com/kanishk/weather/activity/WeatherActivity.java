@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.kanishk.constants.Constants;
 import com.kanishk.constants.Temperature;
@@ -21,7 +20,7 @@ import com.kanishk.yahoo.query.YahooWeatherQuery;
 /**
  * The Class WeatherActivity. The class for maintaining the weather information.
  */
-public class WeatherActivity extends BaseSearchActivity implements OnClickListener {
+public class WeatherActivity extends BaseSearchActivity {
 
 	/** The update container. */
 	private WeatherUpdateContainer updateContainer;
@@ -47,18 +46,11 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		setContentView(R.layout.activity_weather);
 		setupAutoSuggest();
 		updateContainer = WeatherUpdateContainer.getInitUpdateContainer(this);
-		setUpOptionButtons();
+		setUpTemperatureButtons();
 		weatherActivityContainerView = findViewById(R.id.weather_layout);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		outerlayOut = findViewById(R.id.outerlay);
 		setProgressDialogue();
-	}
-	
-	@Override
-	public void onClick(View v) {
-		Intent i = new Intent();
-        i.setClass(this, FavouriteActivity.class);
-        startActivity(i);
 	}
 	
 	/**
@@ -77,7 +69,7 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 	/**
 	 * Sets the up temperature button.
 	 */
-	private void setUpOptionButtons() {
+	private void setUpTemperatureButtons() {
 		this.temperatureUnit = (Button) findViewById(R.id.tempr_unit);
 		temperatureUnit.setOnClickListener(new OnClickListener() {		
 			@Override
@@ -85,8 +77,6 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 				changeTemperature();
 			}
 		});
-		ImageButton favourite = (ImageButton) findViewById(R.id.favourites);
-		favourite.setOnClickListener(this);
 	}
 
 	/**
@@ -109,7 +99,12 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 		}
 	}
 	
+	/**
+	 * Change temperature. Method to change the temperature value of all
+	 * temperature fields.
+	 */
 	private void changeTemperature() {
+		// Get shared preference to get current temperature value(Celcius or Farenheit)
 		SharedPreferences pref = getSharedPreferences();
 		String tempUnit = pref.getString(Constants.TEMPERATURE, Temperature.CELCIUS.getValue());
 		Temperature temperature;
@@ -120,6 +115,7 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 			tempUnit = getString(R.string.degreeC);
 			temperature = Temperature.CELCIUS;
 		}
+		// Save the new temperature unit to shared preferences
 		Editor edit = pref.edit();
 		temperatureUnit.setText(tempUnit);
 		edit.putString(Constants.TEMPERATURE, temperature.getValue());
@@ -183,6 +179,13 @@ public class WeatherActivity extends BaseSearchActivity implements OnClickListen
 			editor.putString(Constants.WOEID, woeid);
 			editor.commit();				
 		}
+	}
+
+	@Override
+	protected void favoriteButtonAction() {
+		Intent i = new Intent();
+        i.setClass(this, FavouriteActivity.class);
+        startActivity(i);
 	}
 
 }

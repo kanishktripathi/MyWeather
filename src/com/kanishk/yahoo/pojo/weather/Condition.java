@@ -7,7 +7,7 @@ public class Condition {
 
     @Expose
     private String code;
-    @Expose
+    
     private String date;
     @Expose
     private String temp;

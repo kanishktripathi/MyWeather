@@ -5,11 +5,11 @@ import com.google.gson.annotations.Expose;
 
 public class Rss {
 
-    @Expose
+    
     private String version;
-    @Expose
+    
     private String geo;
-    @Expose
+    
     private String yweather;
     @Expose
     private Channel channel;

@@ -37,6 +37,7 @@ public class YahooWeatherImageTask extends AsyncTask<Void, Void, Bitmap> {
 	 */
 	public YahooWeatherImageTask(String code, ImageView imageView) {
 		this.code = code;
+		/*Weak reference to avoid memory leaks*/
 		this.imageReference = new WeakReference<ImageView>(imageView);
 		this.imgManager = ImageManager.getInstance();
 	}

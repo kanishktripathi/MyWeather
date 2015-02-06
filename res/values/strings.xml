@@ -11,6 +11,7 @@
     <string name="progress">Loading&#8230;</string>
     <string name="refresh">Refresh</string>
     <string name="location">Current location weather</string>
+    <string name="favourites">Favourite places</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
     <string name="wind_speed">Wind speed</string>
