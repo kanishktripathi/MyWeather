@@ -24,9 +24,6 @@ public class CustomFavouriteContainer implements OnClickListener {
 	/** The woeid. */
 	private String woeid;
 	
-	/** The full text. */
-	private String fullText;
-	
 	/** The text. */
 	private TextView text;
 	
@@ -47,7 +44,6 @@ public class CustomFavouriteContainer implements OnClickListener {
 	 */
 	public CustomFavouriteContainer(ViewGroup parent, String fullText) {
 		String[] arr = PATTERN.split(fullText);
-		this.fullText = fullText;
 		this.woeid = arr[0];
 		init(parent, arr[1]);
 	}
@@ -55,37 +51,16 @@ public class CustomFavouriteContainer implements OnClickListener {
 	/**
 	 * Instantiates a new custom favourite container.
 	 *
-	 * @param parent the parent
+	 * @param parent the parent view group under which the place name and remove button
+	 * will be displayed
 	 * @param woeid the woeid
 	 * @param name the name
 	 */
 	public CustomFavouriteContainer(ViewGroup parent, String woeid, String name) {
 		this.woeid = woeid;
-		StringBuilder sb = new StringBuilder(woeid).append("__").append(name);
-		this.fullText = sb.toString();
 		init(parent, name);
 	}
-	
-	/**
-	 * Instantiates a new custom favourite container.
-	 *
-	 * @param parent the parent
-	 * @param woeid the woeid
-	 * @param name the name
-	 * @param fullText the full text
-	 */
-	public CustomFavouriteContainer(ViewGroup parent, String woeid, String name, String fullText) {
-		this.woeid = woeid;
-		this.fullText = fullText;
-		init(parent, name);
-	}
-	
-	/**
-	 * Inits the.
-	 *
-	 * @param parent the parent
-	 * @param name the name
-	 */
+		
 	private void init(ViewGroup parent, String name) {
 		text = (TextView) parent.findViewById(R.id.favText);		
 		text.setId(View.NO_ID);
@@ -112,9 +87,11 @@ public class CustomFavouriteContainer implements OnClickListener {
 			return;
 		}
 		//We used a single listener for both text view and image button click. So this check
-		if(v instanceof TextView) {
+		if(v == text) {
 			listener.onViewClick(woeid);
 		} else {
+			StringBuilder sb = new StringBuilder(woeid).append("__").append(this.text.getText());
+			String fullText = sb.toString();
 			listener.onRemoveClick(parent, fullText);
 			cleanUp();
 		}
@@ -127,7 +104,6 @@ public class CustomFavouriteContainer implements OnClickListener {
 	private void cleanUp() {
 		remove = null;
 		woeid = null;
-		fullText = null;
 		text = null;
 		parent = null;
 		listener = null;

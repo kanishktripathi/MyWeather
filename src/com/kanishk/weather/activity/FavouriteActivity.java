@@ -53,7 +53,7 @@ public class FavouriteActivity extends BaseSearchActivity implements FavouriteLa
 	}
 	
 	/**
-	 * Creates the controls from preferences.
+	 * Creates the already selected favorite places controls from the shared preferences data.
 	 */
 	private void createControlsFromPreferences() {
 		if(preferences.contains(Constants.FAVOURITES)) {
@@ -68,7 +68,7 @@ public class FavouriteActivity extends BaseSearchActivity implements FavouriteLa
 	}
 	
 	/**
-	 * Adds the to favorites. Validates the current favorite set and adds to it
+	 * Validates the current favorite set and adds to it
 	 * if the place does not exist and there's less than 10 favorite elements.
 	 * @param woeId the woe id
 	 * @param placeName the place name
@@ -77,13 +77,14 @@ public class FavouriteActivity extends BaseSearchActivity implements FavouriteLa
 		if(this.favourites == null) {
 			this.favourites = new HashSet<String>();
 		}
-		String setKey = getFullText(woeId, placeName);
+		StringBuilder sb = new StringBuilder(woeId);
+		String setKey = sb.append(Constants.PATTERN).append(placeName).toString();
 		if(this.favourites.contains(setKey)) {
 			displayMessage(getString(R.string.place_add_error));
 		} else if(favourites.size() == MAX_CAPACITY){
 			displayMessage(getString(R.string.place_add_max_error));
 		} else {
-			addControl(woeId, placeName, setKey);
+			addControl(woeId, placeName);
 			favourites.add(setKey);
 			Editor editor = preferences.edit();
 			editor.putStringSet(Constants.FAVOURITES, favourites);
@@ -92,28 +93,16 @@ public class FavouriteActivity extends BaseSearchActivity implements FavouriteLa
 	}
 	
 	/**
-	 * Adds the control.
+	 * Adds the favorite place to activity screen.
 	 *
 	 * @param woeId the woe id
 	 * @param placeName the place name
-	 * @param fullName the full name
 	 */
-	private void addControl(String woeId, String placeName, String fullName) {
+	private void addControl(String woeId, String placeName) {
 		LinearLayout layout = (LinearLayout) inflator.inflate(R.layout.fav_layout, null);
 		layoutList.addView(layout);
-		CustomFavouriteContainer container = new CustomFavouriteContainer(layout, woeId, placeName, fullName);
+		CustomFavouriteContainer container = new CustomFavouriteContainer(layout, woeId, placeName);
 		container.setListener(this);
-	}
-	
-	/**
-	 * Gets the full text.
-	 *
-	 * @param woeId the woe id
-	 * @param placeName the place name
-	 * @return the full text
-	 */
-	private String getFullText(String woeId, String placeName) {
-		return new StringBuilder(woeId).append(Constants.PATTERN).append(placeName).toString();
 	}
 
 	@Override
