@@ -230,8 +230,8 @@ public final class WeatherUpdateContainer {
 		forecastMax1.setText(foreCast.getHigh());
 		forecastMin1.setText(foreCast.getLow());
 		forecastText1.setText(foreCast.getText());
-		imageUpdate(forecastImg2, foreCast.getCode());
 		foreCast = forecastList.get(2);
+		imageUpdate(forecastImg2, foreCast.getCode());
 		forecastDay2.setText(foreCast.getDay());
 		forecastMax2.setText(foreCast.getHigh());
 		forecastMin2.setText(foreCast.getLow());
