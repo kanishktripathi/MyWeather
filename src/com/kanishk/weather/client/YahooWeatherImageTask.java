@@ -112,6 +112,6 @@ public class YahooWeatherImageTask extends AsyncTask<Void, Void, Bitmap> {
 	 */
 	public static void taskExecuteUtil(String code, ImageView imageView) {
 		YahooWeatherImageTask task = new YahooWeatherImageTask(code, imageView);
-		task.execute();
+		task.executeOnExecutor(YahooWeatherImageTask.THREAD_POOL_EXECUTOR);
 	}
 }
